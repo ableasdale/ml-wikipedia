@@ -1,0 +1,96 @@
+<export><workspace name="Wikipedia"><query name="1. Wikipedia DB" focus="false" active="true" content-source="as:10733606212685392296:" mode="xquery">xquery version "1.0-ml"; 
+
+import module namespace admin = "http://marklogic.com/xdmp/admin" at "/MarkLogic/admin.xqy";
+import module namespace info = "http://marklogic.com/appservices/infostudio" at "/MarkLogic/appservices/infostudio/info.xqy";
+
+declare variable $DATABASE as xs:string := "Wikipedia";
+
+let $_ := info:database-create($DATABASE, 2)
+return
+
+admin:save-configuration(
+  admin:database-add-range-element-index( 
+    admin:get-configuration(), 
+    xdmp:database($DATABASE), 
+    (
+      admin:database-range-element-index("string", "http://www.mediawiki.org/xml/export-0.10/", "title", "http://marklogic.com/collation/codepoint", fn:false(), "ignore"),
+      admin:database-range-element-index("dateTime", "http://www.mediawiki.org/xml/export-0.10/", "timestamp", (), fn:false(), "ignore")
+    )
+  )
+)
+</query><query name="Data Loader" focus="false" active="true" content-source="9022286536565138122:0:Apps" mode="xquery">xquery version "1.0-ml";
+
+(: 
+  Load a big wikipedia dump into ML 
+  https://dumps.wikimedia.org/enwiki/
+:)
+
+declare variable $FILENAME as xs:string := "/Users/ableasdale/Downloads/enwiki-20160720-pages-articles-multistream.xml" 
+(:enwiki-20160720-pages-articles1.xml-p000000010p000030302"; :)
+
+for $x in 
+xdmp:document-get($FILENAME, 
+  &lt;options xmlns="xdmp:document-get"&gt;
+    &lt;format&gt;xml&lt;/format&gt;
+  &lt;/options&gt;)/node()/node()
+return 
+
+if (xdmp:node-kind($x) eq "element")
+then (
+xdmp:spawn-function( function() {
+xdmp:document-insert("/"||xdmp:random()||".xml" , $x)},
+&lt;options xmlns="xdmp:eval"&gt;
+  &lt;transaction-mode&gt;update-auto-commit&lt;/transaction-mode&gt;
+  &lt;database&gt;{xdmp:database("Wikipedia")}&lt;/database&gt;
+&lt;/options&gt;
+)
+)
+else()
+</query><query name="Check Range Index.." focus="false" active="true" content-source="9022286536565138122:0:Apps" mode="xquery">xquery version "1.0-ml";
+
+declare namespace mw = "http://www.mediawiki.org/xml/export-0.10/";
+
+for $i in cts:element-values(xs:QName("mw:title"), (), ("collation=http://marklogic.com/collation/codepoint", "limit=150"))
+return ($i, cts:uri-match($i))</query><query name="Query 2" focus="true" active="true" content-source="12012305534928051438:0:Apps" mode="xquery">xquery version "1.0-ml";
+
+xs:dateTime("2010-05-24T00:18:57Z")
+
+</query><query name="Teardown" focus="false" active="true" content-source="2769645330877116732:0:Apps" mode="xquery">xquery version "1.0-ml"; 
+
+import module namespace admin = "http://marklogic.com/xdmp/admin" at "/MarkLogic/admin.xqy";
+import module namespace info = "http://marklogic.com/appservices/infostudio" at "/MarkLogic/appservices/infostudio/info.xqy";
+
+declare variable $DATABASE as xs:string := "Wikipedia";
+
+info:database-delete($DATABASE)
+</query><query name="Query 3" focus="true" active="true" content-source="9022286536565138122:0:Apps" mode="xquery">xquery version "1.0-ml";
+
+(: 
+  Load a big wikipedia dump into ML 
+  https://dumps.wikimedia.org/enwiki/
+:)
+
+declare variable $FILENAME as xs:string := "/Users/ableasdale/Downloads/enwiki-20160720-pages-articles-multistream.xml";
+(:enwiki-20160720-pages-articles1.xml-p000000010p000030302"; :)
+
+
+for $x in 
+xdmp:document-get($FILENAME, 
+  &lt;options xmlns="xdmp:document-get"&gt;
+    &lt;format&gt;xml&lt;/format&gt;
+  &lt;/options&gt;)/node()/node()
+return 
+
+if (xdmp:node-kind($x) eq "element")
+then (
+xdmp:spawn-function( function() {
+xdmp:document-insert("/"||xdmp:random()||".xml" , $x)},
+&lt;options xmlns="xdmp:eval"&gt;
+  &lt;transaction-mode&gt;update-auto-commit&lt;/transaction-mode&gt;
+  &lt;database&gt;{xdmp:database("Wikipedia")}&lt;/database&gt;
+&lt;/options&gt;
+)
+)
+else()
+
+</query></workspace></export>
