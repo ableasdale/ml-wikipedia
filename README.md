@@ -28,7 +28,7 @@ admin:save-configuration(
 
 ## Loading with mlcp
 
-### Initial test load (not optimal)
+### Initial test load (to local machine - not optimal)
 ```bash
 mlcp-8.0-5/bin/mlcp.sh IMPORT -input_file_path="enwiki-20160720-pages-articles-multistream.xml" \
 -host="localhost" -username="*****" -password="*****" -database="Wikipedia2" -xml_repair_level="full" \
@@ -39,7 +39,8 @@ mlcp-8.0-5/bin/mlcp.sh IMPORT -input_file_path="enwiki-20160720-pages-articles-m
 ### Fastload test (loading over network)
 ```bash
 mlcp-8.0-5/bin/mlcp.sh IMPORT -input_file_path="enwiki-20160720-pages-articles-multistream.xml" \
--host="{HOSTNAME}" -username="*****" -password="*****" -database="Wikipedia" \
+-host="{host}" -username="*****" -password="*****" -database="Wikipedia" \
 -xml_repair_level="full" -input_file_type="aggregates" -aggregate_record_element="page" \
--aggregate_record_namespace="http://www.mediawiki.org/xml/export-0.10/" -fastload -batch_size="1" -transaction_size="1"
+-aggregate_record_namespace="http://www.mediawiki.org/xml/export-0.10/" -fastload -batch_size="20" -transaction_size="1" \
+-thread_count="32"
 ```
