@@ -1,5 +1,5 @@
 
-Testing with the **enwiki-20160720-pages-articles-multistream.xml** file, which should create 16,753,779 individual <page> elements.
+Testing with the **enwiki-20160720-pages-articles-multistream.xml** file, which should create 16,753,779 individual **page** elements.
 
 Initial test load (not optimal)
 ```bash
