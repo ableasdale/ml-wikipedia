@@ -18,7 +18,7 @@ public class Sweble2
     public static void main(String[] args) throws Exception
     {
         run(
-                new File(System.getProperty("user.dir")+"/src/main/resources/test.txt"),
+                new File(System.getProperty("user.dir")+"/src/main/resources/test3.txt"),
                 "title",
                 false);
 
@@ -57,6 +57,7 @@ public class Sweble2
 
         if (renderHtml)
         {
+
             throw new UnsupportedOperationException(
                     "HTML rendering is not yet supported!");
 

@@ -1,0 +1,45 @@
+{{Infobox airport
+| name = Aguanish Water Aerodrome
+| image =
+| IATA =
+| ICAO =
+| TC = CTQ3
+| type = Public
+| owner =
+| operator = Air Adventure Côte-Nord
+| city-served =
+| location = [[Aguanish, Quebec|Aguanish]], [[Quebec]]
+| timezone = [[Eastern Time Zone|EST]]
+| utc = [[UTC−05:00]]
+| summer = EDT
+| utcs = [[UTC−04:00]]
+| elevation-f = 0
+| latd = 50 | latm = 13 | lats = 50 | latNS = N
+| longd= 062 | longm= 06 | longs= 45 | longEW= W
+| coordinates_region = CA-QC
+| pushpin_map = Canada Quebec
+| pushpin_label = CTQ3
+| pushpin_map_caption = Location in Quebec
+| website =
+| r1-number = n/a
+| r1-length-f = n/a
+| r1-length-m = n/a
+| r1-surface = Water
+| footnotes = Sources: [[Canada Flight Supplement|Water Aerodrome Supplement]]<ref name="CFS">{{WAS}}</ref>
+}}
+
+'''Aguanish Water Aerodrome''' {{Airport codes||||CTQ3}} is located {{convert|1|NM|lk=in}} west northwest of [[Aguanish, Quebec|Aguanish]], [[Quebec]], [[Canada]] on the [[Aguanus River]].
+
+==See also==
+*[[Natashquan Airport]]
+
+==References==
+<references/>
+
+{{List of airports in Canada}}
+
+[[Category:Registered aerodromes in Côte-Nord]]
+[[Category:Seaplane bases in Quebec]]
+
+
+{{Quebec-airport-stub}}
