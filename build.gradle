@@ -1,0 +1,40 @@
+group 'ml-wikipedia'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url "http://developer.marklogic.com/maven2"}
+    maven { url "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/"}
+}
+
+dependencies {
+    compile 'com.marklogic:marklogic-xcc:8.0.5'
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile 'nux:nux:1.6'
+    compile group: 'com.ximpleware', name: 'vtd-xml', version: '2.13'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.7'
+    compile group: 'com.fasterxml', name: 'aalto-xml', version: '1.0.0'
+    compile group: 'com.fasterxml.staxmate', name: 'staxmate', version: '2.3.0'
+    compile group: 'com.io7m.xom', name: 'xom', version: '1.2.10'
+    compile group: 'org.sweble.wikitext', name: 'swc-parser-lazy', version: '2.1.0'
+    compile group: 'org.sweble.wikitext', name: 'swc-engine', version: '2.1.0'
+
+    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntax-xwiki21', version: '8.0'
+    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntax-mediawiki', version: '8.0'
+    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntax-wikimodel', version: '8.0'
+    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-wikimodel', version: '8.0'
+    compile group: 'org.xwiki.commons', name: 'xwiki-commons-logging-logback', version: '8.0'
+    compile group: 'org.xwiki.commons', name: 'xwiki-commons-component-default', version: '8.0'
+    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-macro-toc', version: '8.0'
+    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-macro-html', version: '8.0'
+    compile group: 'org.xwiki.commons', name: 'xwiki-commons-component-default', version: '8.0'
+// compile group: 'com.marklogic:mlcp:8.0-5'
+    compile group: 'org.sweble.wom3', name: 'sweble-wom3-example-basic', version: '2.1.0'
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
