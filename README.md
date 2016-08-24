@@ -28,6 +28,41 @@ admin:save-configuration(
 
 ## Loading with mlcp
 
+Execute **load-wikipedia-xml.sh**
+
+A sample options file (**options.txt**):
+
+```bash
+-input_file_path
+enwiki-20160720-pages-articles-multistream.xml
+-host
+{HOSTNAME}
+-username
+*****
+-password
+*****
+-database
+Wikipedia
+-xml_repair_level
+full 
+-input_file_type
+aggregates
+-aggregate_record_element
+page
+-aggregate_record_namespace
+http://www.mediawiki.org/xml/export-0.10/
+-fastload 
+-batch_size
+50
+-transaction_size
+1
+-thread_count
+48
+```
+
+
+## Notes from earlier runs
+
 ### Initial test load (to local machine - not optimal)
 ```bash
 mlcp-8.0-5/bin/mlcp.sh IMPORT -input_file_path="enwiki-20160720-pages-articles-multistream.xml" \
