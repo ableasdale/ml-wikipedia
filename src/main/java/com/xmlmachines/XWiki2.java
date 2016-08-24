@@ -45,11 +45,11 @@ public class XWiki2 {
 
 // Generate XHTML out of the modified XDOM
             WikiPrinter printer = new DefaultWikiPrinter();
-//            BlockRenderer renderer =
-//                    componentManager.getInstance(BlockRenderer.class, "html/5.0" );
+            BlockRenderer renderer =
+                    componentManager.getInstance(BlockRenderer.class, "html/5.0" );
 
-            BlockRenderer renderer = componentManager.getInstance(
-                                       BlockRenderer.class, Syntax.PLAIN_1_0.toIdString());
+//            BlockRenderer renderer = componentManager.getInstance(
+//                                       BlockRenderer.class, Syntax.PLAIN_1_0.toIdString());
             //"xhtml/1.0");
             renderer.render(xdom, printer);
 

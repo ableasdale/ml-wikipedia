@@ -58,7 +58,7 @@ public class XWiki {
 
         try {
             String data = FileUtils.readFileToString(new File(System.getProperty("user.dir")+"/src/main/resources/test3.txt"));
-            converter.convert(new StringReader(data), Syntax.MEDIAWIKI_1_0, Syntax.HTML_5_0, printer);
+            converter.convert(new StringReader(data), Syntax.MEDIAWIKI_1_0, Syntax.XHTML_1_0, printer);
         } catch (ConversionException e) {
             e.printStackTrace();
         } catch (IOException e) {
