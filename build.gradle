@@ -8,10 +8,13 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
-    maven { url "http://developer.marklogic.com/maven2"}
-    maven { url "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/"}
-    maven { url "https://repo.eclipse.org/content/repositories/mylyn-snapshots/"}
+    maven { url "http://developer.marklogic.com/maven2" }
+    maven { url "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/" }
+    maven { url "https://repo.eclipse.org/content/repositories/mylyn-snapshots/" }
+    maven { url "http://nexus.xwiki.org/nexus/content/groups/public" }
 }
+
+ext.xwikiVersion = '8.2.1'
 
 dependencies {
     compile 'com.marklogic:marklogic-xcc:8.0.5'
@@ -25,33 +28,51 @@ dependencies {
     compile group: 'org.sweble.wikitext', name: 'swc-parser-lazy', version: '2.1.0'
     compile group: 'org.sweble.wikitext', name: 'swc-engine', version: '2.1.0'
 
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntaxes', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntax-confluencexhtml', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntax-xwiki21', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntax-html5', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntax-html', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntax-mediawiki', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntax-wikimodel', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntax-annotatedxhtml', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-wikimodel', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-standalone', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-macro-footnotes', version: '8.0'
+    // XWiki Dependencies below...
 
-    compile group: 'org.xwiki.commons', name: 'xwiki-commons-logging-logback', version: '8.0'
-    compile group: 'org.xwiki.commons', name: 'xwiki-commons-component-default', version: '8.0'
-    compile group: 'org.xwiki.commons', name: 'xwiki-commons-component-api', version: '8.0'
-    compile group: 'org.xwiki.commons', name: 'xwiki-commons-context', version: '8.0'
-    compile group: 'org.xwiki.commons', name: 'xwiki-commons-xml', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-macro-toc', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-macro-html', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-macro-box', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-macro-content', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntax-xdomxml10', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntax-tex', version: '8.0'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-macros', version: '8.0', ext: 'pom'
-    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntaxes', version: '8.0', ext: 'pom'
+    compile "org.xwiki.rendering:xwiki-rendering-syntax-xhtml:$xwikiVersion"
+    compile "org.xwiki.rendering:xwiki-rendering-syntaxes:$xwikiVersion"
+    compile "org.xwiki.rendering:xwiki-rendering-api:$xwikiVersion"
+    compile "org.xwiki.rendering:xwiki-rendering-syntax-event:$xwikiVersion"
+    compile "org.xwiki.rendering:xwiki-rendering-syntax-confluencexhtml:$xwikiVersion"
+    compile "org.xwiki.rendering:xwiki-rendering-syntax-xwiki21:$xwikiVersion"
+    compile "org.xwiki.rendering:xwiki-rendering-syntax-html5:$xwikiVersion"
+    compile "org.xwiki.rendering:xwiki-rendering-syntax-html:$xwikiVersion"
+    compile "org.xwiki.rendering:xwiki-rendering-syntax-wikimodel:$xwikiVersion"
+    compile "org.xwiki.rendering:xwiki-rendering-syntax-annotatedxhtml:$xwikiVersion"
+    //compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-wikimodel', version: $xwikiVersion
+    //compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-standalone', version: $xwikiVersion
+    compile "org.xwiki.rendering:xwiki-rendering-macro-footnotes:$xwikiVersion"
 
-    //  compile group: 'org.xwiki.commons', name: 'xwiki-commons-component-default', version: '8.0'
+
+    compile "org.xwiki.commons:xwiki-commons-logging-logback:$xwikiVersion"
+    compile "org.xwiki.commons:xwiki-commons-component-default:$xwikiVersion"
+    compile "org.xwiki.commons:xwiki-commons-component-api:$xwikiVersion"
+    compile "org.xwiki.commons:xwiki-commons-configuration-api:$xwikiVersion"
+    compile "org.xwiki.commons:xwiki-commons-properties:$xwikiVersion"
+    compile "org.xwiki.commons:xwiki-commons-context:$xwikiVersion"
+    compile "org.xwiki.commons:xwiki-commons-xml:$xwikiVersion"
+    compile "org.xwiki.commons:xwiki-commons-script:$xwikiVersion"
+
+    compile group: 'org.xwiki.contrib.mediawiki', name: 'mediawiki', version: '1.7.7'
+    compile group: 'org.xwiki.contrib.mediawiki', name: 'mediawiki-xml', version: '1.7.7'
+    compile group: 'org.xwiki.contrib.mediawiki', name: 'mediawiki-syntax', version: '1.7.7'
+    compile group: 'org.xwiki.contrib.mediawiki', name: 'mediawiki-syntax10override', version: '1.7.7'
+
+    compile "org.xwiki.contrib.markdown:syntax-markdown-markdown11:8.2"
+    compile "org.xwiki.contrib.markdown:syntax-markdown-markdown10:8.2"
+    compile "org.xwiki.contrib.markdown:syntax-markdown:8.2"
+
+//    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-macro-toc', version: $xwikiVersion
+//    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-macro-html', version: $xwikiVersion
+//    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-macro-box', version: $xwikiVersion
+//    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-macro-content', version: $xwikiVersion
+//    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntax-xdomxml10', version: $xwikiVersion
+//    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntax-tex', version: $xwikiVersion
+//    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-macros', version: $xwikiVersion, ext: 'pom'
+//    compile group: 'org.xwiki.rendering', name: 'xwiki-rendering-syntaxes', version: $xwikiVersion, ext: 'pom'
+
+    //  compile group: 'org.xwiki.commons', name: 'xwiki-commons-component-default', version: $xwikiVersion
 // compile group: 'com.marklogic:mlcp:8.0-5'
     compile group: 'org.sweble.wom3', name: 'sweble-wom3-example-basic', version: '2.1.0'
     compile group: 'de.tudarmstadt.ukp.wikipedia', name: 'de.tudarmstadt.ukp.wikipedia.api', version: '1.1.0'
@@ -63,6 +84,7 @@ dependencies {
     compile group: 'org.eclipse.mylyn.docs', name: 'org.eclipse.mylyn.wikitext.core', version: '2.10.0-SNAPSHOT'
     compile group: 'com.google.guava', name: 'guava', version: '19.0'
     compile 'org.jsoup:jsoup:1.9.2'
+    compile group: 'org.pegdown', name: 'pegdown', version: '1.6.0'
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }

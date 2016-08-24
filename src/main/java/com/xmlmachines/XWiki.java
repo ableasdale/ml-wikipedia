@@ -57,8 +57,8 @@ public class XWiki {
         WikiPrinter printer = new DefaultWikiPrinter();
 
         try {
-            String data = FileUtils.readFileToString(new File(System.getProperty("user.dir")+"/src/main/resources/test3.txt"));
-            converter.convert(new StringReader(data), Syntax.MEDIAWIKI_1_0, Syntax.XHTML_1_0, printer);
+            String data = FileUtils.readFileToString(new File(System.getProperty("user.dir") + "/src/main/resources/test3.txt"));
+            converter.convert(new StringReader(data), Syntax.MEDIAWIKI_1_0, Syntax.ANNOTATED_XHTML_1_0, printer);
         } catch (ConversionException e) {
             e.printStackTrace();
         } catch (IOException e) {
