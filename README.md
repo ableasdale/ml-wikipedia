@@ -22,7 +22,9 @@ bzip2 -d enwiki-20160820-pages-articles-multistream.xml.bz2
 
 ### TODO DBPedia ?
 ```
-http://web.informatik.uni-mannheim.de/DBpediaAsTables/DBpediaAsTablesJSON.tar
+wget http://web.informatik.uni-mannheim.de/DBpediaAsTables/DBpediaAsTablesJSON.tar
+tar -xvf DBpediaAsTablesJSON.tar
+
 http://downloads.dbpedia.org/2016-04/core-i18n/en/
 ```
 
