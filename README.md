@@ -22,6 +22,13 @@ bzip2 -d enwiki-20160820-pages-articles-multistream.xml.bz2
 
 ### TODO DBPedia ?
 ```
+mkdir dbpedia
+cd dbpedia
+./get-dbpedia-data.sh
+bzip2 -d *
+
+## older attempts
+
 wget http://web.informatik.uni-mannheim.de/DBpediaAsTables/DBpediaAsTablesJSON.tar
 tar -xvf DBpediaAsTablesJSON.tar
 
@@ -116,4 +123,13 @@ mlcp-8.0-5/bin/mlcp.sh IMPORT -input_file_path="enwiki-20160720-pages-articles-m
 16/08/25 04:19:23 INFO contentpump.LocalJobRunner: OUTPUT_RECORDS_COMMITTED: 16824194
 16/08/25 04:19:23 INFO contentpump.LocalJobRunner: OUTPUT_RECORDS_FAILED: 0
 16/08/25 04:19:23 INFO contentpump.LocalJobRunner: Total execution time: 13987 sec
+```
+
+### Simple search
+```xquery
+xquery version "1.0-ml";
+
+declare namespace mw = "http://www.mediawiki.org/xml/export-0.10/";
+
+cts:search(doc(), cts:element-value-query(xs:QName("mw:title"), "Wild Beasts"))
 ```
