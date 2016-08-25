@@ -1,7 +1,30 @@
 
 Testing with the **enwiki-20160720-pages-articles-multistream.xml** (~54GB) file, which should create 16,753,779 individual **page** elements.
 
-## Creating the Wikipedia Database
+## Setup
+
+### Get MLCP 
+####(latest release can be found at https://developer.marklogic.com/products/mlcp)
+
+```bash
+wget https://developer.marklogic.com/download/binaries/mlcp/mlcp-8.0-5-bin.zip
+unzip mlcp-8.0-5-bin.zip
+```
+
+### Getting the current Wikipedia dump data
+
+```bash
+wget http://dumps.wikimedia.your.org/enwiki/20160820/enwiki-20160820-pages-articles-multistream.xml.bz2
+bzip2 -d enwiki-20160820-pages-articles-multistream.xml.bz2
+```
+
+### TODO DBPedia ?
+```
+http://web.informatik.uni-mannheim.de/DBpediaAsTables/DBpediaAsTablesJSON.tar
+http://downloads.dbpedia.org/2016-04/core-i18n/en/
+```
+
+### Creating the Wikipedia Database
 
 ```xquery
 xquery version "1.0-ml"; 
@@ -26,7 +49,7 @@ admin:save-configuration(
 )
 ```
 
-## Loading with mlcp
+### Loading with mlcp
 
 Execute **load-wikipedia-xml.sh**
 
