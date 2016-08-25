@@ -1,5 +1,7 @@
 
-Testing with the **enwiki-20160720-pages-articles-multistream.xml** (~54GB) file, which should create 16,753,779 individual **page** elements.
+Tested with the following:
+* **enwiki-20160720-pages-articles-multistream.xml** (~54GB) file, which should create 16,753,779 individual **page** elements.
+* **enwiki-20160820-pages-articles-multistream.xml** (~55GB) file, which should create 16,824,194 individual **page** elements.
 
 ## Setup
 
@@ -101,4 +103,15 @@ mlcp-8.0-5/bin/mlcp.sh IMPORT -input_file_path="enwiki-20160720-pages-articles-m
 -xml_repair_level="full" -input_file_type="aggregates" -aggregate_record_element="page" \
 -aggregate_record_namespace="http://www.mediawiki.org/xml/export-0.10/" -fastload -batch_size="20" -transaction_size="1" \
 -thread_count="32"
+```
+
+
+### MLCP output on completion
+```bash
+16/08/25 04:19:23 INFO contentpump.LocalJobRunner: com.marklogic.mapreduce.ContentPumpStats:
+16/08/25 04:19:23 INFO contentpump.LocalJobRunner: INPUT_RECORDS: 16824194
+16/08/25 04:19:23 INFO contentpump.LocalJobRunner: OUTPUT_RECORDS: 16824194
+16/08/25 04:19:23 INFO contentpump.LocalJobRunner: OUTPUT_RECORDS_COMMITTED: 16824194
+16/08/25 04:19:23 INFO contentpump.LocalJobRunner: OUTPUT_RECORDS_FAILED: 0
+16/08/25 04:19:23 INFO contentpump.LocalJobRunner: Total execution time: 13987 sec
 ```
